@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"><br>
+<title>Contact Us Page</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+<style type="text/css">
+#map { width:1350px;height:400px; border: 1px solid #000; }
+</style>
+<title>Types of map</title>
+<script 
+	src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&language=vi">
+</script>
+<script language="javascript">
+var mapType = google.maps.MapTypeId.ROADMAP;
+
+function loadMap() {
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+    center: new google.maps.LatLng(10.03465, 105.777777),
+    zoom:14,
+    mapTypeId: mapType
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+function changeMapType() {
+	var type = document.getElementById("sltMapType").value;
+	switch(type) {
+		case "ROADMAP"  : mapType = google.maps.MapTypeId.ROADMAP;   break;
+		case "SATELLITE": mapType = google.maps.MapTypeId.SATELLITE; break;
+		case "HYBRID"   : mapType = google.maps.MapTypeId.HYBRID;    break;
+		case "TERRAIN"  : mapType = google.maps.MapTypeId.TERRAIN;   break;
+	}
+	loadMap();
+}
+</script>
+</head>
+<body onload="loadMap()">
+<div id="header">
+			<div class="container">
+					
+				<!-- Logo -->
+					<div id="logo">
+						<h1><a href="index.html">ASK ME</a></h1>
+					</div>
+				
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li class="active"><a href="index.html">Home</a></li>
+							<li><a href="#">Smartphone</a></li>
+							<li><a href="#">Compare Phone</a></li>
+                            <li><a href="#">Contact Us</a></li>
+							<li><a href="map.html">About US</a></li>
+						</ul>
+					</nav>
+
+			</div>
+		</div>
+<div style="margin-bottom: 10px" id="divMapType">Type of map
+	<select id="sltMapType" onChange="changeMapType()">
+   	<option value="ROADMAP">Road map</option>
+   	<option value="SATELLITE">Satellite</option>
+   	<option value="HYBRID">Hybrid</option>
+   	<option value="TERRAIN">Terrain</option>
+   </select>
+</div>
+<div id="map"></div>
+</body>
+</html>
